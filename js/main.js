@@ -20,7 +20,7 @@ if (!adStatus) {
 }
 
 const script = document.createElement("script");
-script.src = "https://data.3kh0.net/script.js";
+script.src = "https://data.ZGC.net/script.js";
 script.defer = true;
 script.setAttribute("data-website-id", "47d72bde-ba44-4125-b161-00e0c2f5b7f0");
 document.head.appendChild(script);
