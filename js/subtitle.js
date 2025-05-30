@@ -27,7 +27,7 @@ function getRandomGreeting() {
     "Sponsered by RAID SHADOW LEGENDS!",
     "Sponsored by Honey!",
     "Sponsored by ZGC!",
-    "Piplup is cute",
+    "SHOUTOUT TO MY BOI FADIL",
     "Zayaan is a bozo",
     "Powered by 128 Gigs of RAM!",
     "Powered by 16MB of RAM!",
