@@ -2,80 +2,9 @@
 <html lang="en-US">
   <head>
     <title>Projects | ZGC</title>
-    <meta name="keywords" content="front-end web developer, unblocked, games, google sites, unblocked games mom, ublocked, code, coding, programmer, development, javascript, jquery, bootstrap, sass, less, git" />
-    <meta property="og:title" content="Welcome to ZGC lite, a lightweight, fast, and clean game site." />
-    <meta property="og:site_name" content="ZGC.github.io" />
-    <meta property="og:description" content="Welcome to ZGC lite, a lightweight, fast, and clean game site." />
-    <meta name="description" content="Welcome to ZGC lite, a lightweight, fast, and clean game site." />
-    <meta name="author" content="ZGC" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="shortcut-icon" href="/favicon.ico" />
-    <script src="/js/main.js"></script>
     <style>
-      /* Basic styling */
-      p {
-        text-align: center;
-        max-width: 600px;
-        margin: 20px auto;
-      }
-      button {
-        cursor: pointer;
-        background-color: #22c55e;
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        border-radius: 20px;
-        margin-top: 20px;
-      }
-      .game-link {
-        height: 400px;
-        width: 300px;
-        text-decoration: none;
-      }
-      .game-tile {
-        background-color: #949494;
-        height: 400px;
-        width: 300px;
-        border-radius: 30px;
-      }
-      .game-icon {
-        border-radius: 30px;
-        width: 300px;
-        height: 300px;
-      }
-      .game-title {
-        font-size: 30px;
-        font-weight: bold;
-        color: #000000;
-        text-align: center;
-        margin: auto;
-      }
-      .flex-container {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-      }
-      .container {
-        padding: 10px;
-      }
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      /* Fullscreen particles container behind content */
       #particles-js {
         position: fixed;
         width: 100%;
@@ -83,15 +12,26 @@
         top: 0;
         left: 0;
         z-index: -1;
-        background-color: #121212; /* match your bg */
+        background-color: #121212;
       }
+      /* Your other styles here... */
+      body {
+        background-color: #121212;
+        color: #fff;
+        font-family: 'Courier New', monospace;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+      /* Keep the rest of your styling or add as needed */
     </style>
   </head>
-  <body style="background-color: #121212; color: #ffffff; font-family: 'Courier New', monospace; text-decoration: none; text-align: center;">
-    <!-- Particles container -->
+  <body>
     <div id="particles-js"></div>
 
-    <h1 style="font-size: 3em; text-align: center;">Projects</h1>
+    <h1 style="font-size: 3em; margin-top: 1rem;">Projects</h1>
+
+    <!-- Your existing content here -->
     <input
       type="text"
       id="search"
@@ -104,7 +44,8 @@
       style="display: block; border: 16px solid #f3f3f3; border-top: 16px solid #3498db; border-radius: 50%; width: 120px; height: 120px; animation: spin 0.3s linear infinite; margin: auto; margin-top: 1rem;"
     ></div>
     <div id="game-container" class="flex-container"></div>
-    <p class="text-center">
+
+    <p>
       <a href="/index.html" style="text-decoration: none;">
         <button
           style="cursor: pointer; background-color: #b625cc; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 20px; margin-top: 5px;"
@@ -113,6 +54,7 @@
         </button>
       </a>
     </p>
+
     <button
       id="back-to-top"
       style="display: none; position: fixed; bottom: 20px; right: 20px;"
@@ -120,40 +62,48 @@
       Back to top
     </button>
 
-    <!-- Load particles.js CDN -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <script>
-      // Initialize particles with minimal config (white circles falling down)
       particlesJS("particles-js", {
         particles: {
-          number: { value: 80, density: { enable: true, value_area: 800 } },
-          color: { value: "#ffffff" },
-          shape: { type: "circle" },
-          opacity: { value: 0.7 },
-          size: { value: 5, random: true },
+          number: { value: 60, density: { enable: true, value_area: 800 } },
+          shape: {
+            type: "image",
+            image: {
+              src: "https://cdn-icons-png.flaticon.com/512/642/642102.png",
+              width: 32,
+              height: 32,
+            },
+          },
+          opacity: { value: 0.8 },
+          size: { value: 15, random: true },
           move: {
             enable: true,
-            speed: 2,
+            speed: 3,
             direction: "bottom",
-            out_mode: "out"
-          }
+            random: true,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+          },
         },
         interactivity: {
           detect_on: "canvas",
           events: {
             onhover: { enable: true, mode: "grab" },
-            onclick: { enable: true, mode: "push" }
+            onclick: { enable: true, mode: "push" },
           },
           modes: {
             grab: { distance: 140, line_linked: { opacity: 1 } },
-            push: { particles_nb: 4 }
-          }
+            push: { particles_nb: 4 },
+          },
         },
         retina_detect: true,
       });
 
-      // Your existing game loading + search code:
+      // Your existing JS for loading/searching games, back to top button here...
+
       let games = [];
       fetch("config/games.json")
         .then((response) => response.json())
