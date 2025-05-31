@@ -12,18 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="shortcut-icon" href="/favicon.ico" />
-
+    <script src="/js/main.js"></script>
     <style>
-      /* Particles container should be behind the content */
-      #particles-js {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        background-color: #121212;
-      }
+      /* Basic styling */
       p {
         text-align: center;
         max-width: 600px;
@@ -68,8 +59,6 @@
       .flex-container {
         display: flex;
         flex-direction: row;
-        order: 0;
-        flex-grow: 0;
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
@@ -85,10 +74,20 @@
           transform: rotate(360deg);
         }
       }
+
+      /* Fullscreen particles container behind content */
+      #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        background-color: #121212; /* match your bg */
+      }
     </style>
   </head>
-  <body style="background-color: transparent; color: #ffffff; font-family: 'Courier New', monospace; text-decoration: none; text-align: center; margin:0;">
-    
+  <body style="background-color: #121212; color: #ffffff; font-family: 'Courier New', monospace; text-decoration: none; text-align: center;">
     <!-- Particles container -->
     <div id="particles-js"></div>
 
@@ -121,94 +120,40 @@
       Back to top
     </button>
 
-    <!-- particles.js CDN -->
+    <!-- Load particles.js CDN -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <script>
-      // Initialize particles.js with snowflake effect config
+      // Initialize particles with minimal config (white circles falling down)
       particlesJS("particles-js", {
         particles: {
-          number: {
-            value: 80,
-            density: {
-              enable: true,
-              value_area: 800,
-            },
-          },
-          color: {
-            value: "#ffffff",
-          },
-          shape: {
-            type: "image",
-            image: {
-              src: "https://cdn-icons-png.flaticon.com/512/642/642102.png", // small snowflake icon
-              width: 20,
-              height: 20,
-            },
-          },
-          opacity: {
-            value: 0.7,
-            random: false,
-            anim: {
-              enable: false,
-              speed: 1,
-              opacity_min: 0.1,
-              sync: false,
-            },
-          },
-          size: {
-            value: 10,
-            random: true,
-            anim: {
-              enable: false,
-              speed: 40,
-              size_min: 0.1,
-              sync: false,
-            },
-          },
+          number: { value: 80, density: { enable: true, value_area: 800 } },
+          color: { value: "#ffffff" },
+          shape: { type: "circle" },
+          opacity: { value: 0.7 },
+          size: { value: 5, random: true },
           move: {
             enable: true,
             speed: 2,
             direction: "bottom",
-            random: false,
-            straight: false,
-            out_mode: "out",
-            bounce: false,
-            attract: {
-              enable: false,
-              rotateX: 300,
-              rotateY: 1200,
-            },
-          },
+            out_mode: "out"
+          }
         },
         interactivity: {
           detect_on: "canvas",
           events: {
-            onhover: {
-              enable: true,
-              mode: "grab",
-            },
-            onclick: {
-              enable: true,
-              mode: "push",
-            },
-            resize: true,
+            onhover: { enable: true, mode: "grab" },
+            onclick: { enable: true, mode: "push" }
           },
           modes: {
-            grab: {
-              distance: 140,
-              line_linked: {
-                opacity: 1,
-              },
-            },
-            push: {
-              particles_nb: 4,
-            },
-          },
+            grab: { distance: 140, line_linked: { opacity: 1 } },
+            push: { particles_nb: 4 }
+          }
         },
         retina_detect: true,
       });
 
+      // Your existing game loading + search code:
       let games = [];
       fetch("config/games.json")
         .then((response) => response.json())
