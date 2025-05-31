@@ -12,34 +12,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="shortcut-icon" href="/favicon.ico" />
-    <!-- Particles.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script src="/js/main.js"></script>
     <style>
-      body {
-        background-color: #121212;
-        color: #ffffff;
-        font-family: 'Courier New', monospace;
-        text-decoration: none;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-        position: relative;
-        overflow-x: hidden;
-      }
-      /* Make particles container cover whole page */
-      #particles-js {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: 0; /* behind content */
-      }
       p {
         text-align: center;
         max-width: 600px;
         margin: 20px auto;
+        font-family: 'Courier New', monospace;
+      }
+      input[type="text"] {
+        font-family: 'Courier New', monospace;
       }
       button {
         cursor: pointer;
@@ -55,35 +37,21 @@
         margin-top: 20px;
         font-family: 'Courier New', monospace;
       }
-      #search {
-        width: 100%;
-        max-width: 600px;
-        font-size: 18px;
-        padding: 6px 20px;
-        margin: auto;
-        border-radius: 30px;
-        font-family: 'Courier New', monospace;
-        border: none;
-        outline: none;
-        box-sizing: border-box;
-        margin-bottom: 10px;
-      }
       .game-link {
-        width: 22%;
         height: 400px;
+        width: 300px;
         text-decoration: none;
       }
       .game-tile {
         background-color: #949494;
         height: 400px;
-        width: 100%;
+        width: 300px;
         border-radius: 30px;
       }
       .game-icon {
         border-radius: 30px;
-        width: 100%;
+        width: 300px;
         height: 300px;
-        object-fit: cover;
       }
       .game-title {
         font-size: 30px;
@@ -96,14 +64,13 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 20px;
-        max-width: 1300px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 1; /* above particles */
+        gap: 30px;
       }
       .container {
         padding: 10px;
+        flex: 1 0 21%; /* roughly 4 per row with gaps */
+        max-width: 300px;
+        box-sizing: border-box;
       }
       @keyframes spin {
         0% {
@@ -113,32 +80,40 @@
           transform: rotate(360deg);
         }
       }
-      #loader {
-        border: 16px solid #f3f3f3;
-        border-top: 16px solid #3498db;
-        border-radius: 50%;
-        width: 120px;
-        height: 120px;
-        animation: spin 0.3s linear infinite;
-        margin: auto;
-        margin-top: 1rem;
-        position: relative;
-        z-index: 1;
+      #particles-js {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-color: #121212;
       }
       #back-to-top {
-        display: none;
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
         font-family: 'Courier New', monospace;
+        cursor: pointer;
+        background-color: #b625cc;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        font-size: 16px;
+        border-radius: 20px;
       }
-      a > button {
+      /* Style the "Go to homepage" anchor as button */
+      .home-link {
+        display: inline-block;
+        cursor: pointer;
+        background-color: #b625cc;
+        color: white;
+        padding: 15px 32px;
+        font-size: 16px;
+        border-radius: 20px;
         font-family: 'Courier New', monospace;
+        text-decoration: none;
+        margin-top: 5px;
       }
     </style>
   </head>
-  <body>
-    <!-- Particles container -->
+  <body style="background-color: #121212; color: #ffffff; font-family: 'Courier New', monospace; text-decoration: none; text-align: center; margin: 0; padding: 0;">
     <div id="particles-js"></div>
 
     <h1 style="font-size: 3em; text-align: center;">Projects</h1>
@@ -147,59 +122,42 @@
       id="search"
       onkeyup="searchGames()"
       placeholder="Search for games..."
-      autocomplete="off"
+      style="width: 100%; max-width: 600px; font-size: 18px; padding: 6px 20px; margin: auto; border-radius: 30px; font-family: 'Courier New', monospace;"
     />
-    <div id="loader"></div>
+    <div
+      id="loader"
+      style="display: block; border: 16px solid #f3f3f3; border-top: 16px solid #3498db; border-radius: 50%; width: 120px; height: 120px; animation: spin 0.3s linear infinite; margin: auto; margin-top: 1rem;"
+    ></div>
     <div id="game-container" class="flex-container"></div>
     <p class="text-center">
-      <a href="/index.html" style="text-decoration: none;">
-        <button>
-          Go to the homepage
-        </button>
-      </a>
+      <a href="/index.html" class="home-link">Go to the homepage</a>
     </p>
-    <button id="back-to-top">Back to top</button>
+    <button id="back-to-top" style="display: none; position: fixed; bottom: 20px; right: 20px;">Back to top</button>
 
     <script>
       particlesJS("particles-js", {
         particles: {
-          number: { value: 80, density: { enable: true, value_area: 800 } },
+          number: { value: 60, density: { enable: true, value_area: 800 } },
           color: { value: "#ffffff" },
           shape: { type: "circle" },
-          opacity: {
-            value: 0.6,
-            random: false,
-            anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false },
-          },
-          size: {
-            value: 4,
-            random: true,
-            anim: { enable: false, speed: 20, size_min: 0.1, sync: false },
-          },
+          opacity: { value: 0.8, random: false },
+          size: { value: 4, random: true },
           line_linked: { enable: false },
-          move: {
-            enable: true,
-            speed: 2,
-            direction: "bottom",
-            random: false,
-            straight: false,
-            out_mode: "out",
-            bounce: false,
-            attract: { enable: false, rotateX: 600, rotateY: 1200 },
-          },
+          move: { enable: true, speed: 1, direction: "bottom", random: false, straight: false, out_mode: "out", bounce: false }
         },
         interactivity: {
           detect_on: "canvas",
           events: {
-            onhover: { enable: true, mode: "bubble" },
-            onclick: { enable: false, mode: "repulse" },
-            resize: true,
+            onhover: { enable: true, mode: "repulse" },
+            onclick: { enable: true, mode: "push" },
+            resize: true
           },
           modes: {
-            bubble: { distance: 100, size: 6, duration: 2, opacity: 1, speed: 3 },
-          },
+            repulse: { distance: 100, duration: 0.4 },
+            push: { particles_nb: 4 }
+          }
         },
-        retina_detect: true,
+        retina_detect: true
       });
 
       let games = [];
@@ -214,7 +172,7 @@
             game.className = "game-link container";
             game.innerHTML = `
               <div class="game-tile">
-                <img class="game-icon" src="${project.imgSrc}" alt="icon" loading="lazy" />
+                <img class="game-icon" src="${project.imgSrc}" alt="icon" />
                 <p class="game-title">${project.title}</p>
               </div>`;
             container.appendChild(game);
@@ -243,7 +201,7 @@
           });
       }
 
-      const backToTopButton = document.getElementById('back-to-top');
+      const backToTopButton = document.getElementById("back-to-top");
       window.onscroll = function () {
         if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
           backToTopButton.style.display = "block";
