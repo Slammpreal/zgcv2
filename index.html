@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Zayaans Game Corner V2</title>
     <style>
+      /* Ensure particles.js background fills the screen */
       #particles-js {
         position: fixed;
         top: 0;
@@ -24,7 +25,7 @@
   </head>
   <body style="background-color: #121212; color: #ffffff; font-family: 'Courier New', monospace; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
 
-    <!-- Particles Background -->
+    <!-- Particle background container -->
     <div id="particles-js"></div>
 
     <h1 style="font-size: 3em; text-align: center;">
@@ -45,13 +46,17 @@
         Contact Me at <a href="mailto:https://www.youtube.com/watch?v=dQw4w9WgXcQ" style="color: #22c55e;">here</a>.
     </p>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <!-- Load particles.js from your local js folder -->
+    <script src="/js/particles.js"></script>
+
+    <!-- Load the particle configuration -->
     <script>
       particlesJS.load('particles-js', '/assets/particles.json', function () {
-        console.log('particles.js config loaded');
+        console.log('callback - particles.js config loaded');
       });
     </script>
+
+    <!-- Your custom scripts -->
     <script src="/js/main.js"></script>
     <script src="/js/subtitle.js"></script>
   </body>
