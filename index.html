@@ -11,20 +11,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Zayaans Game Corner V2</title>
+
     <style>
-      /* Add this CSS to style the particles container */
+      /* Make particles canvas cover entire viewport */
       #particles-js {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1; /* behind content */
+        background-color: #121212; /* match your page background */
       }
     </style>
   </head>
-  <body style="background-color: #121212; color: #ffffff; font-family: 'Courier New', monospace; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
-    <div id="particles-js"></div> <!-- Particles container -->
+  <body style="color: #ffffff; font-family: 'Courier New', monospace; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+    
+    <!-- Particles container -->
+    <div id="particles-js"></div>
+
     <h1 style="font-size: 3em; text-align: center;">
       Zayaans Game Corner V2
     </h1>
@@ -39,17 +44,18 @@
       </a>
     </p>
     <p style="text-align: center; max-width: 600px; margin: 20px auto;">
-        &copy; ZGC, 2024. All rights reserved. You are welcome to use and/or duplicate material from the <a href="https://github.com/ZGC/ZGC-lite" style="color: #22c55e;">GitHub repository</a> with proper credit to ZGC.<br /><br />
-        Contact Me at <a href="mailto:https://www.youtube.com/watch?v=dQw4w9WgXcQ" style="color: #22c55e;">here</a>.
+      &copy; ZGC, 2024. All rights reserved. You are welcome to use and/or duplicate material from the <a href="https://github.com/ZGC/ZGC-lite" style="color: #22c55e;">GitHub repository</a> with proper credit to ZGC.<br /><br />
+      Contact Me at <a href="mailto:https://www.youtube.com/watch?v=dQw4w9WgXcQ" style="color: #22c55e;">here</a>.
     </p>
-    <script src="assets/particles.min.js"></script> <!-- Correct path to particles.js -->
-    <script>
-      /* Initialize particles.js */
-      particlesJS.load('particles-js', 'assets/particles.json', function() {
-        console.log('callback - particles.js config loaded');
-      });
-    </script>
+
+    <script src="assets/particles.min.js"></script>
     <script src="/js/main.js"></script>
     <script src="/js/subtitle.js"></script>
+
+    <script>
+      particlesJS.load('particles-js', 'assets/particles.json', function() {
+        console.log('particles.js config loaded');
+      });
+    </script>
   </body>
 </html>
