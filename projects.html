@@ -12,9 +12,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="shortcut-icon" href="/favicon.ico" />
-    <script src="/js/main.js"></script>
+
     <style>
-      /* Your existing styles */
+      /* Particles container should be behind the content */
+      #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        background-color: #121212;
+      }
       p {
         text-align: center;
         max-width: 600px;
@@ -76,75 +85,129 @@
           transform: rotate(360deg);
         }
       }
-      /* NEW: particles container */
-      #particles-js {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0; left: 0;
-        z-index: -1; /* behind everything */
-        background-color: #121212; /* match background */
-      }
     </style>
   </head>
-  <body style="background-color: #121212; color: #ffffff; font-family: 'Courier New', monospace; text-decoration: none; text-align: center;">
+  <body style="background-color: transparent; color: #ffffff; font-family: 'Courier New', monospace; text-decoration: none; text-align: center; margin:0;">
     
-    <!-- particles container -->
+    <!-- Particles container -->
     <div id="particles-js"></div>
-    
+
     <h1 style="font-size: 3em; text-align: center;">Projects</h1>
-    <input type="text" id="search" onkeyup="searchGames()" placeholder="Search for games..." style="width: 100%; font-size: 18px; padding: 6px 20px; margin: auto; border-radius: 30px; max-width: 600px; margin-bottom: 10px;" />
-    <div id="loader" style="display: block; border: 16px solid #f3f3f3; border-top: 16px solid #3498db; border-radius: 50%; width: 120px; height: 120px; animation: spin 0.3s linear infinite; margin: auto; margin-top: 1rem;"></div>
+    <input
+      type="text"
+      id="search"
+      onkeyup="searchGames()"
+      placeholder="Search for games..."
+      style="width: 100%; font-size: 18px; padding: 6px 20px; margin: auto; border-radius: 30px; max-width: 600px; margin-bottom: 10px;"
+    />
+    <div
+      id="loader"
+      style="display: block; border: 16px solid #f3f3f3; border-top: 16px solid #3498db; border-radius: 50%; width: 120px; height: 120px; animation: spin 0.3s linear infinite; margin: auto; margin-top: 1rem;"
+    ></div>
     <div id="game-container" class="flex-container"></div>
     <p class="text-center">
       <a href="/index.html" style="text-decoration: none;">
-        <button style="cursor: pointer; background-color: #b625cc; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 20px; margin-top: 5px;">
+        <button
+          style="cursor: pointer; background-color: #b625cc; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 20px; margin-top: 5px;"
+        >
           Go to the homepage
         </button>
       </a>
     </p>
-    <button id="back-to-top" style="display: none; position: fixed; bottom: 20px; right: 20px;">Back to top</button>
+    <button
+      id="back-to-top"
+      style="display: none; position: fixed; bottom: 20px; right: 20px;"
+    >
+      Back to top
+    </button>
+
+    <!-- particles.js CDN -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
     <script>
-      // Initialize particles.js with snow effect and mouse interaction
-      particlesJS('particles-js', {
+      // Initialize particles.js with snowflake effect config
+      particlesJS("particles-js", {
         particles: {
-          number: { value: 400, density: { enable: true, value_area: 800 } },
-          color: { value: '#ffffff' },
-          shape: { type: 'circle' },
-          opacity: { value: 0.7, random: false },
-          size: { value: 5, random: true },
-          line_linked: { enable: false },
+          number: {
+            value: 80,
+            density: {
+              enable: true,
+              value_area: 800,
+            },
+          },
+          color: {
+            value: "#ffffff",
+          },
+          shape: {
+            type: "image",
+            image: {
+              src: "https://cdn-icons-png.flaticon.com/512/642/642102.png", // small snowflake icon
+              width: 20,
+              height: 20,
+            },
+          },
+          opacity: {
+            value: 0.7,
+            random: false,
+            anim: {
+              enable: false,
+              speed: 1,
+              opacity_min: 0.1,
+              sync: false,
+            },
+          },
+          size: {
+            value: 10,
+            random: true,
+            anim: {
+              enable: false,
+              speed: 40,
+              size_min: 0.1,
+              sync: false,
+            },
+          },
           move: {
             enable: true,
-            speed: 5,
-            direction: 'bottom',
-            random: true,
+            speed: 2,
+            direction: "bottom",
+            random: false,
             straight: false,
-            out_mode: 'out',
+            out_mode: "out",
             bounce: false,
-            attract: { enable: true, rotateX: 300, rotateY: 1200 }
-          }
+            attract: {
+              enable: false,
+              rotateX: 300,
+              rotateY: 1200,
+            },
+          },
         },
         interactivity: {
-          detect_on: 'canvas',
+          detect_on: "canvas",
           events: {
-            onhover: { enable: true, mode: 'bubble' },
-            onclick: { enable: true, mode: 'repulse' },
-            resize: true
+            onhover: {
+              enable: true,
+              mode: "grab",
+            },
+            onclick: {
+              enable: true,
+              mode: "push",
+            },
+            resize: true,
           },
           modes: {
-            grab: { distance: 400, line_linked: { opacity: 0.5 } },
-            bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
-            repulse: { distance: 200, duration: 0.4 },
-            push: { particles_nb: 4 },
-            remove: { particles_nb: 2 }
-          }
+            grab: {
+              distance: 140,
+              line_linked: {
+                opacity: 1,
+              },
+            },
+            push: {
+              particles_nb: 4,
+            },
+          },
         },
-        retina_detect: true
+        retina_detect: true,
       });
-
-      // Your existing JS code for games and back to top button remains unchanged below
 
       let games = [];
       fetch("config/games.json")
@@ -187,9 +250,12 @@
           });
       }
 
-      const backToTopButton = document.getElementById('back-to-top');
+      const backToTopButton = document.getElementById("back-to-top");
       window.onscroll = function () {
-        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        if (
+          document.body.scrollTop > 100 ||
+          document.documentElement.scrollTop > 100
+        ) {
           backToTopButton.style.display = "block";
         } else {
           backToTopButton.style.display = "none";
@@ -203,4 +269,3 @@
     </script>
   </body>
 </html>
-
