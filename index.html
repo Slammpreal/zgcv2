@@ -12,9 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Zayaans Game Corner V2</title>
     <style>
-      /* Ensure particles.js background fills the screen */
+      /* Add this CSS to style the particles container */
       #particles-js {
-        position: fixed;
+        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
@@ -24,10 +24,7 @@
     </style>
   </head>
   <body style="background-color: #121212; color: #ffffff; font-family: 'Courier New', monospace; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
-
-    <!-- Particle background container -->
-    <div id="particles-js"></div>
-
+    <div id="particles-js"></div> <!-- Particles container -->
     <h1 style="font-size: 3em; text-align: center;">
       Zayaans Game Corner V2
     </h1>
@@ -45,18 +42,13 @@
         &copy; ZGC, 2024. All rights reserved. You are welcome to use and/or duplicate material from the <a href="https://github.com/ZGC/ZGC-lite" style="color: #22c55e;">GitHub repository</a> with proper credit to ZGC.<br /><br />
         Contact Me at <a href="mailto:https://www.youtube.com/watch?v=dQw4w9WgXcQ" style="color: #22c55e;">here</a>.
     </p>
-
-    <!-- Load particles.js from your local js folder -->
-    <script src="/js/particles.js"></script>
-
-    <!-- Load the particle configuration -->
+    <script src="assets/particles.min.js"></script> <!-- Correct path to particles.js -->
     <script>
-      particlesJS.load('particles-js', '/assets/particles.json', function () {
+      /* Initialize particles.js */
+      particlesJS.load('particles-js', 'assets/particles.json', function() {
         console.log('callback - particles.js config loaded');
       });
     </script>
-
-    <!-- Your custom scripts -->
     <script src="/js/main.js"></script>
     <script src="/js/subtitle.js"></script>
   </body>
