@@ -1,65 +1,114 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Zayaans Game Corner V2</title>
-  <style>
-    body, html {
-      margin: 0; padding: 0; height: 100%;
+  <head>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="keywords" content="front-end web developer, unblocked, games, google sites, unblocked games mom, ublocked, code, coding, programmer, development, javascript, jquery, bootstrap, sass, less, git" />
+    <meta property="og:title" content="Welcome to Zayaans Game Corner V2, a lightweight, fast, and clean game site." />
+    <meta property="og:site_name" content="ZGC.github.io" />
+    <meta property="og:description" content="Welcome to Zayaans Game Corner V2, a lightweight, fast, and clean game site." />
+    <meta name="description" content="Welcome to Zayaans Game Corner V2, a lightweight, fast, and clean game site." />
+    <meta name="author" content="ZGC" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zayaans Game Corner V2</title>
+
+    <style>
+      /* particles container styles */
+      #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+    </style>
+  </head>
+  <body
+    style="
       background-color: #121212;
+      color: #ffffff;
       font-family: 'Courier New', monospace;
-      color: white;
-      overflow: hidden;
-    }
-    #particles-js {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0; left: 0;
-      z-index: -1;
-    }
-    main {
-      position: relative;
-      z-index: 1;
+      margin: 0;
+      padding: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-  <div id="particles-js"></div>
-  <main>
-    <h1 style="font-size: 3em;">Zayaans Game Corner V2</h1>
-    <span id="subtitle" style="font-size: 1.5em;">...</span>
-    <p style="max-width: 600px; margin: 20px auto;">
-      Welcome to Zayaans Game Corner V2, a lightweight, lightning fast, and simple game site.<br />
-      <a href="/projects.html" style="text-decoration: none;">
-        <button style="cursor: pointer; background-color: #22c55e; border: none; color: white; padding: 15px 32px; font-size: 16px; border-radius: 20px; margin-top: 20px; font-family: 'Courier New', monospace;">Start playing!</button>
-      </a><br /><br />
-      <a href="/misc.html" style="text-decoration: none;">
-        <button style="cursor: pointer; background-color: #b625cc; border: none; color: white; padding: 15px 32px; font-size: 16px; border-radius: 20px; margin-top: 5px; font-family: 'Courier New', monospace;">Tools and settings</button>
-      </a>
-    </p>
-    <p style="max-width: 600px; margin: 20px auto;">
-      &copy; ZGC, 2024. All rights reserved. You are welcome to use and/or duplicate material from the <a href="https://github.com/ZGC/ZGC-lite" style="color: #22c55e;">GitHub repository</a> with proper credit to ZGC.<br /><br />
-      Contact Me at <a href="mailto:https://www.youtube.com/watch?v=dQw4w9WgXcQ" style="color: #22c55e;">here</a>.
-    </p>
-  </main>
+      position: relative;
+      overflow: hidden;
+    "
+  >
+    <!-- PARTICLES container -->
+    <div id="particles-js"></div>
 
-  <!-- Use relative paths WITHOUT leading slash -->
-  <script src="assets/particles.min.js"></script>
-  <script>
-    // Load particles from JSON config
-    particlesJS.load('particles-js', 'assets/particles.json', function() {
-      console.log('particles.js config loaded');
-    });
-  </script>
-  <script src="js/main.js"></script>
-  <script src="js/subtitle.js"></script>
-</body>
+    <h1 style="font-size: 3em; text-align: center">Zayaans Game Corner V2</h1>
+    <span id="subtitle" style="font-size: 1.5em">...</span>
+    <p style="text-align: center; max-width: 600px; margin: 20px auto;">
+      Welcome to Zayaans Game Corner V2, a lightweight, lightning fast, and
+      simple game site.<br />
+      <a href="/projects.html" style="text-decoration: none"
+        ><button
+          style="
+            cursor: pointer;
+            background-color: #22c55e;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 20px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+          "
+      >
+        Start playing!
+      </button></a
+      ><br /><br />
+      <a href="/misc.html" style="text-decoration: none"
+        ><button
+          style="
+            cursor: pointer;
+            background-color: #b625cc;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 20px;
+            margin-top: 5px;
+            font-family: 'Courier New', monospace;
+          "
+      >
+        Tools and settings
+      </button></a
+      >
+    </p>
+    <p style="text-align: center; max-width: 600px; margin: 20px auto;">
+      &copy; ZGC, 2024. All rights reserved. You are welcome to use and/or
+      duplicate material from the
+      <a href="https://github.com/ZGC/ZGC-lite" style="color: #22c55e"
+        >GitHub repository</a
+      >
+      with proper credit to ZGC.<br /><br />
+      Contact Me at
+      <a href="mailto:https://www.youtube.com/watch?v=dQw4w9WgXcQ" style="color: #22c55e"
+        >here</a
+      >.
+    </p>
+
+    <script src="assets/particles.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/subtitle.js"></script>
+    <script>
+      particlesJS.load('particles-js', 'assets/particles.json', function () {
+        console.log('particles.js config loaded');
+      });
+    </script>
+  </body>
 </html>
