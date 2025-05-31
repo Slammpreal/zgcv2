@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projects - Zayaans Game Corner V2</title>
   <style>
+    /* particles container behind everything */
     #particles-js {
       position: fixed;
       width: 100%;
@@ -12,30 +13,38 @@
       top: 0; left: 0;
       z-index: -1;
     }
-    body {
-      margin: 0;
-      font-family: 'Courier New', monospace;
-      background-color: #121212;
-      color: white;
-    }
-    main {
+    /* make sure main content is above particles */
+    #content {
       position: relative;
       z-index: 1;
-      padding: 2em;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      color: white;
+      font-family: 'Courier New', monospace;
+    }
+    body {
+      background-color: #121212;
+      margin: 0;
+      padding: 0;
     }
   </style>
 </head>
 <body>
   <div id="particles-js"></div>
-  <main>
-    <h1>Projects</h1>
-    <p>Your projects content goes here...</p>
-  </main>
 
-  <script src="../assets/particles.min.js"></script>
+  <div id="content">
+    <h1>Projects Page</h1>
+    <!-- Your existing projects/games content goes here -->
+    <p>Put your project links or games here.</p>
+  </div>
+
+  <!-- Load particles.js library -->
+  <script src="/js/particles.js"></script>
+  <!-- Initialize particles with config -->
   <script>
-    particlesJS.load('particles-js', '../assets/particles.json', function() {
-      console.log('particles.js loaded on projects page');
+    particlesJS.load('particles-js', '/assets/particles.json', function() {
+      console.log('particles.js loaded - callback');
     });
   </script>
 </body>
