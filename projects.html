@@ -2,137 +2,146 @@
 <html lang="en-US">
   <head>
     <title>Projects | ZGC</title>
-    <meta name="keywords" content="front-end web developer, unblocked, games, google sites, unblocked games mom, ublocked, code, coding, programmer, development, javascript, jquery, bootstrap, sass, less, git" />
-    <meta property="og:title" content="Welcome to ZGC lite, a lightweight, fast, and clean game site." />
-    <meta property="og:site_name" content="ZGC.github.io" />
-    <meta property="og:description" content="Welcome to ZGC lite, a lightweight, fast, and clean game site." />
-    <meta name="description" content="Welcome to ZGC lite, a lightweight, fast, and clean game site." />
-    <meta name="author" content="ZGC" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="ZGC" />
     <link rel="icon" href="/favicon.ico" />
-    <link rel="shortcut-icon" href="/favicon.ico" />
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
-      p {
-        text-align: center;
-        max-width: 600px;
-        margin: 20px auto;
+      body {
+        background-color: #121212;
+        color: #ffffff;
         font-family: 'Courier New', monospace;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 3em;
+        margin: 1rem 0;
       }
       input[type="text"] {
+        width: 100%;
+        max-width: 600px;
+        font-size: 18px;
+        padding: 6px 20px;
+        margin: 20px auto;
+        border-radius: 30px;
         font-family: 'Courier New', monospace;
-      }
-      button {
-        cursor: pointer;
-        background-color: #22c55e;
+        display: block;
+        background-color: #2c2c2c;
+        color: #fff;
         border: none;
+      }
+      button, .home-link {
+        font-family: 'Courier New', monospace;
+        background-color: #b625cc;
         color: white;
         padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
         font-size: 16px;
         border-radius: 20px;
-        margin-top: 20px;
-        font-family: 'Courier New', monospace;
-      }
-      .game-link {
-        height: 400px;
-        width: 300px;
+        border: none;
+        cursor: pointer;
         text-decoration: none;
+        margin-top: 20px;
       }
-      .game-tile {
-        background-color: #949494;
-        height: 400px;
-        width: 300px;
-        border-radius: 30px;
+      .home-link {
+        display: inline-block;
+        margin-top: 5px;
       }
-      .game-icon {
-        border-radius: 30px;
-        width: 300px;
-        height: 300px;
-      }
-      .game-title {
-        font-size: 30px;
-        font-weight: bold;
-        color: #000000;
-        text-align: center;
+      #loader {
+        display: block;
+        border: 16px solid #f3f3f3;
+        border-top: 16px solid #3498db;
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        animation: spin 0.3s linear infinite;
         margin: auto;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      #back-to-top {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
       }
       .flex-container {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 30px;
+        padding: 20px;
       }
       .container {
-        padding: 10px;
-        flex: 1 0 21%; /* roughly 4 per row with gaps */
         max-width: 300px;
+        flex: 1 0 21%;
         box-sizing: border-box;
       }
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
+      .hover-effect {
+        position: relative;
+        overflow: hidden;
+        border-radius: 30px;
+        height: 400px;
+        background-color: #949494;
+      }
+      .hover-effect img {
+        width: 100%;
+        height: 300px;
+        border-radius: 30px;
+        display: block;
+        transition: transform 0.5s ease;
+      }
+      .hover-effect::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: skewX(-25deg);
+        transition: left 0.5s;
+      }
+      .hover-effect:hover img {
+        transform: scale(1.05);
+      }
+      .hover-effect:hover::before {
+        left: 100%;
+      }
+      .hover-effect .game-title {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 10px 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 0 0 30px 30px;
       }
       #particles-js {
         position: fixed;
-        top: 0; left: 0;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
         z-index: -1;
-        background-color: #121212;
-      }
-      #back-to-top {
-        font-family: 'Courier New', monospace;
-        cursor: pointer;
-        background-color: #b625cc;
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        font-size: 16px;
-        border-radius: 20px;
-      }
-      /* Style the "Go to homepage" anchor as button */
-      .home-link {
-        display: inline-block;
-        cursor: pointer;
-        background-color: #b625cc;
-        color: white;
-        padding: 15px 32px;
-        font-size: 16px;
-        border-radius: 20px;
-        font-family: 'Courier New', monospace;
-        text-decoration: none;
-        margin-top: 5px;
       }
     </style>
   </head>
-  <body style="background-color: #121212; color: #ffffff; font-family: 'Courier New', monospace; text-decoration: none; text-align: center; margin: 0; padding: 0;">
+  <body>
     <div id="particles-js"></div>
-
-    <h1 style="font-size: 3em; text-align: center;">Projects</h1>
-    <input
-      type="text"
-      id="search"
-      onkeyup="searchGames()"
-      placeholder="Search for games..."
-      style="width: 100%; max-width: 600px; font-size: 18px; padding: 6px 20px; margin: auto; border-radius: 30px; font-family: 'Courier New', monospace;"
-    />
-    <div
-      id="loader"
-      style="display: block; border: 16px solid #f3f3f3; border-top: 16px solid #3498db; border-radius: 50%; width: 120px; height: 120px; animation: spin 0.3s linear infinite; margin: auto; margin-top: 1rem;"
-    ></div>
+    <h1>Projects</h1>
+    <input type="text" id="search" onkeyup="searchGames()" placeholder="Search for games..." />
+    <div id="loader"></div>
     <div id="game-container" class="flex-container"></div>
-    <p class="text-center">
-      <a href="/index.html" class="home-link">Go to the homepage</a>
-    </p>
-    <button id="back-to-top" style="display: none; position: fixed; bottom: 20px; right: 20px;">Back to top</button>
+    <p><a href="/index.html" class="home-link">Go to the homepage</a></p>
+    <button id="back-to-top">Back to top</button>
 
     <script>
       particlesJS("particles-js", {
@@ -140,10 +149,10 @@
           number: { value: 60, density: { enable: true, value_area: 800 } },
           color: { value: "#ffffff" },
           shape: { type: "circle" },
-          opacity: { value: 0.8, random: false },
+          opacity: { value: 0.8 },
           size: { value: 4, random: true },
           line_linked: { enable: false },
-          move: { enable: true, speed: 1, direction: "bottom", random: false, straight: false, out_mode: "out", bounce: false }
+          move: { enable: true, speed: 1, direction: "bottom", out_mode: "out" }
         },
         interactivity: {
           detect_on: "canvas",
@@ -162,55 +171,42 @@
 
       let games = [];
       fetch("config/games.json")
-        .then((response) => response.json())
+        .then((res) => res.json())
         .then((data) => {
           games = data;
-          const container = document.getElementById("game-container");
-          data.forEach((project) => {
-            const game = document.createElement("a");
-            game.href = project.link;
-            game.className = "game-link container";
-            game.innerHTML = `
-              <div class="game-tile">
-                <img class="game-icon" src="${project.imgSrc}" alt="icon" />
-                <p class="game-title">${project.title}</p>
-              </div>`;
-            container.appendChild(game);
-          });
+          renderGames(games);
           document.getElementById("loader").style.display = "none";
         })
-        .catch((error) => console.error("Error:", error));
+        .catch((err) => console.error("Error:", err));
 
-      function searchGames() {
-        const input = document.getElementById("search");
-        const filter = input.value.toUpperCase();
+      function renderGames(gameList) {
         const container = document.getElementById("game-container");
         container.innerHTML = "";
-        games
-          .filter((game) => game.title.toUpperCase().includes(filter))
-          .forEach((project) => {
-            const game = document.createElement("a");
-            game.href = project.link;
-            game.className = "game-link container";
-            game.innerHTML = `
-              <div class="game-tile">
-                <img class="game-icon" src="${project.imgSrc}" alt="icon" loading="lazy" />
-                <p class="game-title">${project.title}</p>
-              </div>`;
-            container.appendChild(game);
-          });
+        gameList.forEach((project) => {
+          const game = document.createElement("a");
+          game.href = project.link;
+          game.className = "container";
+          game.innerHTML = `
+            <div class="hover-effect">
+              <img src="${project.imgSrc}" alt="${project.title}" />
+              <div class="game-title">${project.title}</div>
+            </div>`;
+          container.appendChild(game);
+        });
       }
 
-      const backToTopButton = document.getElementById("back-to-top");
-      window.onscroll = function () {
-        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-          backToTopButton.style.display = "block";
-        } else {
-          backToTopButton.style.display = "none";
-        }
-      };
+      function searchGames() {
+        const filter = document.getElementById("search").value.toUpperCase();
+        const filtered = games.filter((g) => g.title.toUpperCase().includes(filter));
+        renderGames(filtered);
+      }
 
-      backToTopButton.onclick = function () {
+      const backToTop = document.getElementById("back-to-top");
+      window.onscroll = function () {
+        backToTop.style.display = (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100)
+          ? "block" : "none";
+      };
+      backToTop.onclick = function () {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
       };
