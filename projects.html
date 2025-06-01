@@ -2,9 +2,8 @@
 <html lang="en-US">
   <head>
     <title>Projects | ZGC</title>
-    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="author" content="ZGC" />
+    <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.ico" />
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
@@ -12,43 +11,161 @@
         background-color: #121212;
         color: #ffffff;
         font-family: 'Courier New', monospace;
-        text-align: center;
         margin: 0;
         padding: 0;
+        text-align: center;
       }
+
       h1 {
         font-size: 3em;
-        margin: 1rem 0;
+        margin: 1em 0 0.5em;
       }
+
       input[type="text"] {
         width: 100%;
         max-width: 600px;
         font-size: 18px;
         padding: 6px 20px;
-        margin: 20px auto;
+        margin: auto;
         border-radius: 30px;
         font-family: 'Courier New', monospace;
         display: block;
-        background-color: #2c2c2c;
-        color: #fff;
-        border: none;
       }
-      button, .home-link {
+
+      button {
+        cursor: pointer;
+        background-color: #22c55e;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        font-size: 16px;
+        border-radius: 20px;
         font-family: 'Courier New', monospace;
+        margin-top: 20px;
+      }
+
+      #particles-js {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        padding: 2em;
+      }
+
+      .game-link {
+        text-decoration: none;
+        flex: 1 0 calc(25% - 30px);
+        max-width: 300px;
+        box-sizing: border-box;
+      }
+
+      .hover-effect {
+        position: relative;
+        border-radius: 30px;
+        background-color: #949494;
+        height: 400px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .hover-effect:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+      }
+
+      .hover-effect::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        transform: rotate(25deg);
+        transition: all 0.5s ease;
+        z-index: 2;
+      }
+
+      .hover-effect:hover::before {
+        animation: shineBorder 1s forwards;
+      }
+
+      @keyframes shineBorder {
+        0% {
+          transform: translate(-100%, -100%) rotate(25deg);
+        }
+        100% {
+          transform: translate(100%, 100%) rotate(25deg);
+        }
+      }
+
+      .hover-effect img {
+        width: 100%;
+        height: 300px;
+        border-radius: 30px 30px 0 0;
+        display: block;
+      }
+
+      .hover-effect .game-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 0 0 30px 30px;
+        padding: 10px;
+      }
+
+      .home-link {
+        display: inline-block;
         background-color: #b625cc;
         color: white;
         padding: 15px 32px;
         font-size: 16px;
         border-radius: 20px;
-        border: none;
-        cursor: pointer;
+        font-family: 'Courier New', monospace;
         text-decoration: none;
-        margin-top: 20px;
+        margin-top: 2em;
       }
-      .home-link {
-        display: inline-block;
-        margin-top: 5px;
+
+      #back-to-top {
+        font-family: 'Courier New', monospace;
+        cursor: pointer;
+        background-color: #b625cc;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        font-size: 16px;
+        border-radius: 20px;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: none;
       }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
       #loader {
         display: block;
         border: 16px solid #f3f3f3;
@@ -58,89 +175,36 @@
         height: 120px;
         animation: spin 0.3s linear infinite;
         margin: auto;
+        margin-top: 1rem;
       }
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+
+      @media (max-width: 1000px) {
+        .game-link {
+          flex: 1 0 calc(50% - 30px);
+        }
       }
-      #back-to-top {
-        display: none;
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-      }
-      .flex-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 30px;
-        padding: 20px;
-      }
-      .container {
-        max-width: 300px;
-        flex: 1 0 21%;
-        box-sizing: border-box;
-      }
-      .hover-effect {
-        position: relative;
-        overflow: hidden;
-        border-radius: 30px;
-        height: 400px;
-        background-color: #949494;
-      }
-      .hover-effect img {
-        width: 100%;
-        height: 300px;
-        border-radius: 30px;
-        display: block;
-        transition: transform 0.5s ease;
-      }
-      .hover-effect::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.2);
-        transform: skewX(-25deg);
-        transition: left 0.5s;
-      }
-      .hover-effect:hover img {
-        transform: scale(1.05);
-      }
-      .hover-effect:hover::before {
-        left: 100%;
-      }
-      .hover-effect .game-title {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        padding: 10px 0;
-        background-color: rgba(0, 0, 0, 0.6);
-        color: #fff;
-        font-size: 20px;
-        font-weight: bold;
-        text-align: center;
-        border-radius: 0 0 30px 30px;
-      }
-      #particles-js {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
+
+      @media (max-width: 600px) {
+        .game-link {
+          flex: 1 0 100%;
+        }
       }
     </style>
   </head>
   <body>
     <div id="particles-js"></div>
+
     <h1>Projects</h1>
-    <input type="text" id="search" onkeyup="searchGames()" placeholder="Search for games..." />
+    <input
+      type="text"
+      id="search"
+      onkeyup="searchGames()"
+      placeholder="Search for games..."
+    />
     <div id="loader"></div>
     <div id="game-container" class="flex-container"></div>
-    <p><a href="/index.html" class="home-link">Go to the homepage</a></p>
+
+    <a href="/index.html" class="home-link">Go to the homepage</a>
     <button id="back-to-top">Back to top</button>
 
     <script>
@@ -155,7 +219,6 @@
           move: { enable: true, speed: 1, direction: "bottom", out_mode: "out" }
         },
         interactivity: {
-          detect_on: "canvas",
           events: {
             onhover: { enable: true, mode: "repulse" },
             onclick: { enable: true, mode: "push" },
@@ -174,38 +237,52 @@
         .then((res) => res.json())
         .then((data) => {
           games = data;
-          renderGames(games);
+          const container = document.getElementById("game-container");
+          data.forEach((project) => {
+            const game = document.createElement("a");
+            game.href = project.link;
+            game.className = "game-link";
+            game.innerHTML = `
+              <div class="hover-effect">
+                <img src="${project.imgSrc}" alt="${project.title}" />
+                <div class="game-title">${project.title}</div>
+              </div>`;
+            container.appendChild(game);
+          });
           document.getElementById("loader").style.display = "none";
-        })
-        .catch((err) => console.error("Error:", err));
-
-      function renderGames(gameList) {
-        const container = document.getElementById("game-container");
-        container.innerHTML = "";
-        gameList.forEach((project) => {
-          const game = document.createElement("a");
-          game.href = project.link;
-          game.className = "container";
-          game.innerHTML = `
-            <div class="hover-effect">
-              <img src="${project.imgSrc}" alt="${project.title}" />
-              <div class="game-title">${project.title}</div>
-            </div>`;
-          container.appendChild(game);
         });
-      }
 
       function searchGames() {
-        const filter = document.getElementById("search").value.toUpperCase();
-        const filtered = games.filter((g) => g.title.toUpperCase().includes(filter));
-        renderGames(filtered);
+        const input = document.getElementById("search").value.toUpperCase();
+        const container = document.getElementById("game-container");
+        container.innerHTML = "";
+        games
+          .filter((g) => g.title.toUpperCase().includes(input))
+          .forEach((project) => {
+            const game = document.createElement("a");
+            game.href = project.link;
+            game.className = "game-link";
+            game.innerHTML = `
+              <div class="hover-effect">
+                <img src="${project.imgSrc}" alt="${project.title}" />
+                <div class="game-title">${project.title}</div>
+              </div>`;
+            container.appendChild(game);
+          });
       }
 
       const backToTop = document.getElementById("back-to-top");
       window.onscroll = function () {
-        backToTop.style.display = (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100)
-          ? "block" : "none";
+        if (
+          document.body.scrollTop > 100 ||
+          document.documentElement.scrollTop > 100
+        ) {
+          backToTop.style.display = "block";
+        } else {
+          backToTop.style.display = "none";
+        }
       };
+
       backToTop.onclick = function () {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
