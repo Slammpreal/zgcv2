@@ -2,8 +2,8 @@
 <html lang="en-US">
   <head>
     <title>Projects | ZGC</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.ico" />
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
@@ -32,18 +32,6 @@
         display: block;
       }
 
-      button {
-        cursor: pointer;
-        background-color: #22c55e;
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        font-size: 16px;
-        border-radius: 20px;
-        font-family: 'Courier New', monospace;
-        margin-top: 20px;
-      }
-
       #particles-js {
         position: fixed;
         top: 0;
@@ -66,52 +54,22 @@
         flex: 1 0 calc(25% - 30px);
         max-width: 300px;
         box-sizing: border-box;
+        perspective: 1000px;
       }
 
       .hover-effect {
-        position: relative;
-        border-radius: 30px;
         background-color: #949494;
+        border-radius: 30px;
         height: 400px;
         overflow: hidden;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        transform-style: preserve-3d;
       }
 
       .hover-effect:hover {
-        transform: scale(1.05);
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
-      }
-
-      .hover-effect::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: linear-gradient(
-          120deg,
-          transparent,
-          rgba(255, 255, 255, 0.4),
-          transparent
-        );
-        transform: rotate(25deg);
-        transition: all 0.5s ease;
-        z-index: 2;
-      }
-
-      .hover-effect:hover::before {
-        animation: shineBorder 1s forwards;
-      }
-
-      @keyframes shineBorder {
-        0% {
-          transform: translate(-100%, -100%) rotate(25deg);
-        }
-        100% {
-          transform: translate(100%, 100%) rotate(25deg);
-        }
+        transform: scale(1.05) rotateX(5deg) rotateY(5deg);
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
       }
 
       .hover-effect img {
