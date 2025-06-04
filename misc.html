@@ -121,7 +121,7 @@
       <div>
         <h1>about:blank</h1>
         <div>
-          <p>Enter a URL you want to be opened in an about:blank page below:</p>
+          <p>Enter a URL you want to be opened in a about:blank page below:</p>
           <p>
             <input
               id="url-target"
@@ -136,9 +136,10 @@
             of this website and put it in for extra privacy.
           </p>
         </div>
-        <div class="button-wrapper" style="justify-content: center;">
-          <button id="create">Create page</button>
-        </div>
+      </div>
+
+      <div class="button-wrapper">
+        <button id="create">Create page</button>
       </div>
     </div>
 
@@ -146,7 +147,7 @@
       <div>
         <h1>Tab Cloaker</h1>
         <p>
-          Enter a new tab title or an image URL below. What you set will be used
+          Enter a new tab title or a image URL below. What you set will be used
           on the whole site.
         </p>
         <p>
@@ -171,7 +172,7 @@
         <h1>Ads consent</h1>
         <div>
           <p>
-            Sometimes, ads are shown to support the creator. If you would not like
+            Sometimes, ads are shown to support the creator, if you would not like
             to see ads or it slows down your computer too much, you can disable
             them here.
           </p>
@@ -180,11 +181,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Added "Open in about:blank" button below all containers -->
-    <p class="center-button">
-      <button onclick="openInAboutBlank()">Open in about:blank</button>
-    </p>
 
     <p class="center-button">
       <a href="/index.html" class="home-link">
@@ -244,40 +240,6 @@
         },
         retina_detect: true,
       });
-
-      function openInAboutBlank() {
-        const siteURL = window.location.origin;
-        const win = window.open("about:blank", "_blank");
-        if (win) {
-          const doc = win.document;
-          doc.write(`
-            <!DOCTYPE html>
-            <html>
-            <head>
-              <title>ZGC in about:blank</title>
-              <style>
-                html, body {
-                  margin: 0;
-                  height: 100%;
-                  overflow: hidden;
-                }
-                iframe {
-                  border: none;
-                  width: 100%;
-                  height: 100%;
-                }
-              </style>
-            </head>
-            <body>
-              <iframe src="${siteURL}"></iframe>
-            </body>
-            </html>
-          `);
-          doc.close();
-        } else {
-          alert("Popup blocked! Please allow popups for this site.");
-        }
-      }
     </script>
 
     <script src="/js/misc.js"></script>
