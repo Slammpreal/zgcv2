@@ -5,9 +5,17 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>Miscellaneous | ZGC</title>
     <style>
+      :root {
+        --bg-color: #121212;
+        --text-color: #ffffff;
+        --button-bg: #b625cc;
+        --button-text: #ffffff;
+        --accent: #22c55e;
+      }
+
       body {
-        background-color: #121212;
-        color: #ffffff;
+        background-color: var(--bg-color);
+        color: var(--text-color);
         font-family: 'Courier New', monospace;
         margin: 0;
         padding: 0;
@@ -18,6 +26,10 @@
         height: 100vh;
         position: relative;
         overflow: hidden;
+      }
+
+      h1, h2, p, label {
+        color: var(--text-color);
       }
 
       h2 {
@@ -34,7 +46,7 @@
         border: none;
         border-radius: 10px;
         background-color: #2c2c2c;
-        color: #ffffff;
+        color: var(--text-color);
         font-family: 'Courier New', monospace;
         box-sizing: border-box;
       }
@@ -43,8 +55,8 @@
         padding: 10px 20px;
         border: none;
         border-radius: 10px;
-        background-color: #b625cc;
-        color: #ffffff;
+        background-color: var(--button-bg);
+        color: var(--button-text);
         cursor: pointer;
         font-family: 'Courier New', monospace;
       }
@@ -67,19 +79,8 @@
         z-index: 2;
       }
 
-      label {
-        margin-right: 10px;
-      }
-
-      p.note {
-        margin-bottom: 0.5em;
-        position: relative;
-        z-index: 2;
-      }
-
-      p.center-button {
+      p.note, p.center-button {
         text-align: center;
-        margin-top: 2em;
         position: relative;
         z-index: 2;
       }
@@ -89,17 +90,9 @@
       }
 
       a.home-link button {
-        cursor: pointer;
-        background-color: #22c55e;
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        font-size: 16px;
-        border-radius: 20px;
-        font-family: 'Courier New', monospace;
+        background-color: var(--accent);
       }
 
-      /* particles container */
       #particles-js {
         position: fixed;
         width: 100%;
@@ -112,72 +105,54 @@
     </style>
   </head>
   <body>
-    <!-- particles container -->
     <div id="particles-js"></div>
-
     <h2>Miscellaneous stuff</h2>
 
     <div class="container">
       <div>
         <h1>about:blank</h1>
-        <div>
-          <p>Enter a URL you want to be opened in a about:blank page below:</p>
-          <p>
-            <input
-              id="url-target"
-              type="url"
-              pattern="https://.*"
-              placeholder="Enter a website URL"
-              autocomplete="on"
-            />
-          </p>
-          <p class="note">
-            Note this will not work with some websites, but you can copy the link
-            of this website and put it in for extra privacy.
-          </p>
+        <p>Enter a URL you want to be opened in a about:blank page below:</p>
+        <p><input id="url-target" type="url" pattern="https://.*" placeholder="Enter a website URL" autocomplete="on" /></p>
+        <p class="note">Note this will not work with some websites, but you can copy the link of this website and put it in for extra privacy.</p>
+        <div class="button-wrapper">
+          <button id="create">Create page</button>
         </div>
-      </div>
-
-      <div class="button-wrapper">
-        <button id="create">Create page</button>
       </div>
     </div>
 
     <div class="container">
       <div>
         <h1>Tab Cloaker</h1>
-        <p>
-          Enter a new tab title or a image URL below. What you set will be used
-          on the whole site.
-        </p>
-        <p>
-          <input
-            id="userinput"
-            type="url"
-            placeholder="Enter a title or image URL"
-            autocomplete="on"
-          />
-        </p>
+        <p>Enter a new tab title or a image URL below. What you set will be used on the whole site.</p>
+        <p><input id="userinput" type="url" placeholder="Enter a title or image URL" autocomplete="on" /></p>
         <p id="console-output"></p>
-      </div>
-      <div class="button-wrapper">
-        <button onclick="changeTabTitle();">Set Title</button>
-        <button onclick="changeTabIcon();">Set Icon</button>
-        <button onclick="resetTabSettings();">Reset</button>
+        <div class="button-wrapper">
+          <button onclick="changeTabTitle();">Set Title</button>
+          <button onclick="changeTabIcon();">Set Icon</button>
+          <button onclick="resetTabSettings();">Reset</button>
+        </div>
       </div>
     </div>
 
     <div class="container">
       <div>
         <h1>Ads consent</h1>
-        <div>
-          <p>
-            Sometimes, ads are shown to support the creator, if you would not like
-            to see ads or it slows down your computer too much, you can disable
-            them here.
-          </p>
-          <label for="adConsent">Do not show ads at all:</label>
-          <input type="checkbox" id="adConsent" name="adConsent" />
+        <p>Sometimes, ads are shown to support the creator, if you would not like to see ads or it slows down your computer too much, you can disable them here.</p>
+        <label for="adConsent">Do not show ads at all:</label>
+        <input type="checkbox" id="adConsent" name="adConsent" />
+      </div>
+    </div>
+
+    <div class="container">
+      <div>
+        <h1>Theme Selector</h1>
+        <p>Pick a theme to change the look of the site:</p>
+        <div class="button-wrapper">
+          <button onclick="setTheme('original')">Original</button>
+          <button onclick="setTheme('light')">Light</button>
+          <button onclick="setTheme('tokyo')">Tokyo Night</button>
+          <button onclick="setTheme('github')">GitHub Dark</button>
+          <button onclick="setTheme('synthwave')">Synthwave '84</button>
         </div>
       </div>
     </div>
@@ -188,58 +163,62 @@
       </a>
     </p>
 
-    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
       particlesJS("particles-js", {
         particles: {
           number: { value: 80, density: { enable: true, value_area: 800 } },
           color: { value: "#ffffff" },
-          shape: {
-            type: "circle",
-            stroke: { width: 0, color: "#000000" },
-          },
-          opacity: {
-            value: 0.5,
-            random: false,
-            anim: { enable: false },
-          },
-          size: {
-            value: 6,
-            random: true,
-            anim: { enable: true, speed: 4, size_min: 0.3, sync: false },
-          },
+          shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
+          opacity: { value: 0.5 },
+          size: { value: 6, random: true, anim: { enable: true, speed: 4, size_min: 0.3, sync: false } },
           line_linked: { enable: false },
-          move: {
-            enable: true,
-            speed: 3,
-            direction: "none",
-            random: false,
-            straight: false,
-            out_mode: "out",
-            bounce: false,
-          },
+          move: { enable: true, speed: 3, direction: "none", out_mode: "out" }
         },
         interactivity: {
           detect_on: "canvas",
           events: {
             onhover: { enable: true, mode: "bubble" },
             onclick: { enable: true, mode: "push" },
-            resize: true,
+            resize: true
           },
           modes: {
-            bubble: {
-              distance: 200,
-              size: 10,
-              duration: 2,
-              opacity: 0.8,
-              speed: 3,
-            },
-            push: { particles_nb: 4 },
-          },
+            bubble: { distance: 200, size: 10, duration: 2, opacity: 0.8, speed: 3 },
+            push: { particles_nb: 4 }
+          }
         },
-        retina_detect: true,
+        retina_detect: true
       });
+
+      const themes = {
+        original: {
+          '--bg-color': '#121212', '--text-color': '#ffffff', '--button-bg': '#b625cc', '--button-text': '#ffffff', '--accent': '#22c55e'
+        },
+        light: {
+          '--bg-color': '#f4f4f4', '--text-color': '#111111', '--button-bg': '#cccccc', '--button-text': '#111111', '--accent': '#007acc'
+        },
+        tokyo: {
+          '--bg-color': '#1a1b26', '--text-color': '#c0caf5', '--button-bg': '#7aa2f7', '--button-text': '#1a1b26', '--accent': '#9ece6a'
+        },
+        github: {
+          '--bg-color': '#0d1117', '--text-color': '#c9d1d9', '--button-bg': '#238636', '--button-text': '#ffffff', '--accent': '#58a6ff'
+        },
+        synthwave: {
+          '--bg-color': '#2a2139', '--text-color': '#f92672', '--button-bg': '#66d9ef', '--button-text': '#2a2139', '--accent': '#fd971f'
+        }
+      };
+
+      function setTheme(themeName) {
+        const theme = themes[themeName];
+        if (!theme) return;
+        Object.entries(theme).forEach(([k, v]) => document.documentElement.style.setProperty(k, v));
+        localStorage.setItem('theme', themeName);
+      }
+
+      (function restoreTheme() {
+        const saved = localStorage.getItem('theme');
+        if (saved && themes[saved]) setTheme(saved);
+      })();
     </script>
 
     <script src="/js/misc.js"></script>
