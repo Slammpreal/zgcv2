@@ -4,8 +4,7 @@ console.warn(
   "Feel free to use anything you find here for your project."
 );
 
-// this setting controls if ads are shown,
-// more info on the README.md file
+// Ads logic
 var adStatus = localStorage.getItem("adConsent") === "true"; // default: true
 
 if (!adStatus) {
@@ -19,6 +18,7 @@ if (!adStatus) {
   })();
 }
 
+// Analytics
 const script = document.createElement("script");
 script.src = "https://data.ZGC.net/script.js";
 script.defer = true;
@@ -29,6 +29,7 @@ script.onload = function() {
   umami.track([location.hostname, "pageview"].join("/"));
 };
 
+// Restore title and icon
 const local_title = localStorage.getItem("title");
 const local_icon = localStorage.getItem("icon");
 if (window.localStorage.hasOwnProperty("title")) {
@@ -39,3 +40,25 @@ if (window.localStorage.hasOwnProperty("icon")) {
   document.querySelector("link[rel=icon]").href = local_icon;
   console.log("Icon set to: " + local_icon);
 }
+
+// === THEME SWITCHING ===
+const THEMES = ['default', 'dark', 'tokyo-night'];
+
+function setTheme(themeName) {
+  if (!THEMES.includes(themeName)) {
+    console.warn(`Theme "${themeName}" is not recognized.`);
+    return;
+  }
+  THEMES.forEach(theme => document.body.classList.remove(theme));
+  document.body.classList.add(themeName);
+  localStorage.setItem('selectedTheme', themeName);
+  console.log(`Theme set to: ${themeName}`);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('selectedTheme') || 'default';
+  setTheme(savedTheme);
+});
+
+// Make setTheme globally accessible for button onclicks
+window.setTheme = setTheme;
