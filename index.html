@@ -139,7 +139,7 @@
         const win = window.open("about:blank", "_blank");
         if (win) {
           const doc = win.document;
-          doc.write(
+          doc.write(`
             <!DOCTYPE html>
             <html>
             <head>
@@ -161,7 +161,7 @@
               <iframe src="${siteURL}"></iframe>
             </body>
             </html>
-          );
+          `);
           doc.close();
         } else {
           alert("Popup blocked! Please allow popups for this site.");
