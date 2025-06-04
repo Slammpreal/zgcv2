@@ -4,7 +4,7 @@ console.warn(
   "Feel free to use anything you find here for your project."
 );
 
-// Ads logic (no change)
+// Ads logic
 var adStatus = localStorage.getItem("adConsent") === "true"; // default: true
 
 if (!adStatus) {
@@ -18,7 +18,7 @@ if (!adStatus) {
   })();
 }
 
-// Analytics script (no change)
+// Analytics
 const script = document.createElement("script");
 script.src = "https://data.ZGC.net/script.js";
 script.defer = true;
@@ -29,7 +29,7 @@ script.onload = function() {
   umami.track([location.hostname, "pageview"].join("/"));
 };
 
-// Restore title and icon (no change)
+// Restore title and icon
 const local_title = localStorage.getItem("title");
 const local_icon = localStorage.getItem("icon");
 if (window.localStorage.hasOwnProperty("title")) {
@@ -42,30 +42,23 @@ if (window.localStorage.hasOwnProperty("icon")) {
 }
 
 // === THEME SWITCHING ===
-
-// Available themes you have
-const THEMES = ['default', 'dark', 'tokyo-night']; // add other themes you have here
+const THEMES = ['default', 'dark', 'tokyo-night'];
 
 function setTheme(themeName) {
   if (!THEMES.includes(themeName)) {
     console.warn(`Theme "${themeName}" is not recognized.`);
     return;
   }
-
-  // Remove all theme classes from body
   THEMES.forEach(theme => document.body.classList.remove(theme));
-
-  // Add selected theme class
   document.body.classList.add(themeName);
-
-  // Save to localStorage
   localStorage.setItem('selectedTheme', themeName);
-
   console.log(`Theme set to: ${themeName}`);
 }
 
-// On page load, restore saved theme or fallback to default
 document.addEventListener('DOMContentLoaded', () => {
   const savedTheme = localStorage.getItem('selectedTheme') || 'default';
   setTheme(savedTheme);
 });
+
+// Make setTheme globally accessible for button onclicks
+window.setTheme = setTheme;
