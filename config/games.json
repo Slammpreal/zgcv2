@@ -735,6 +735,12 @@
     "title": "Resent Client (1.8)"
  },
   {
+    "link": "projects/subway-surfers/index.html",
+    "imgSrc": "projects/subway-surfers/subway-surfers-icon.png",
+    "title": "Subway Surfers"
+
+ },
+  {
     "link": "projects/eagler_1.12/eagler.html",
     "imgSrc": "projects/eagler_1.12/mclogo.png",
     "title": "Minecraft 1.12.2"
