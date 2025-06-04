@@ -5,12 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Zayaans Game Corner V2</title>
-    <meta name="keywords" content="front-end web developer, unblocked, games, google sites, unblocked games mom, ublocked, code, coding, programmer, development, javascript, jquery, bootstrap, sass, less, git" />
+    <meta name="description" content="Welcome to Zayaans Game Corner V2, a lightweight, fast, and clean game site." />
+    <meta name="author" content="ZGC" />
+    <meta name="keywords" content="front-end web developer, unblocked, games, google sites, unblocked games mom, ublocked, code, coding, programmer, development, javascript" />
     <meta property="og:title" content="Welcome to Zayaans Game Corner V2, a lightweight, fast, and clean game site." />
     <meta property="og:site_name" content="ZGC.github.io" />
     <meta property="og:description" content="Welcome to Zayaans Game Corner V2, a lightweight, fast, and clean game site." />
-    <meta name="description" content="Welcome to Zayaans Game Corner V2, a lightweight, fast, and clean game site." />
-    <meta name="author" content="ZGC" />
     <style>
       body {
         background-color: #121212;
@@ -44,7 +44,6 @@
         padding: 15px 32px;
         text-align: center;
         text-decoration: none;
-        display: inline-block;
         font-size: 16px;
         border-radius: 20px;
         font-family: 'Courier New', monospace;
@@ -63,27 +62,19 @@
   <body>
     <div id="particles-js"></div>
 
-    <h1 style="font-size: 3em; text-align: center;">
-      Zayaans Game Corner V2
-    </h1>
+    <h1 style="font-size: 3em;">Zayaans Game Corner V2</h1>
     <span id="subtitle" style="font-size: 1.5em;">...</span>
 
     <p style="text-align: center; max-width: 600px; margin: 20px auto;">
       Welcome to Zayaans Game Corner V2, a lightweight, lightning fast, and simple game site.<br />
-      <a href="/projects.html" style="text-decoration: none;">
-        <button>Start playing!</button>
-      </a><br />
-      <a href="/misc.html" style="text-decoration: none;">
-        <button class="purple-button">Tools and settings</button>
-      </a><br />
-      <a href="#" onclick="openInAboutBlank()" style="text-decoration: none;">
-        <button class="blue-button">Open in about:blank</button>
-      </a>
+      <a href="/projects.html"><button>Start playing!</button></a><br />
+      <a href="/misc.html"><button class="purple-button">Tools and settings</button></a><br />
+      <a href="#" onclick="openInAboutBlank()"><button class="blue-button">Open in about:blank</button></a>
     </p>
 
-    <p style="text-align: center; max-width: 600px; margin: 20px auto;">
-      &copy; ZGC, 2024. All rights reserved. You are welcome to use and/or duplicate material from the
-      <a href="https://github.com/ZGC/ZGC-lite" style="color: #22c55e;">GitHub repository</a> with proper credit to ZGC.<br /><br />
+    <p style="text-align: center; max-width: 600px;">
+      &copy; ZGC, 2024. You may duplicate material from the
+      <a href="https://github.com/ZGC/ZGC-lite" style="color: #22c55e;">GitHub repository</a> with credit.<br /><br />
       Contact Me at
       <a href="mailto:https://www.youtube.com/watch?v=dQw4w9WgXcQ" style="color: #22c55e;">here</a>.
     </p>
@@ -92,31 +83,17 @@
     <script>
       particlesJS('particles-js', {
         "particles": {
-          "number": {
-            "value": 80,
-            "density": { "enable": true, "value_area": 800 }
-          },
+          "number": { "value": 80, "density": { "enable": true, "value_area": 800 }},
           "color": { "value": "#ffffff" },
-          "shape": {
-            "type": "circle",
-            "stroke": { "width": 0, "color": "#000000" }
-          },
-          "opacity": { "value": 0.5, "random": false },
+          "shape": { "type": "circle" },
+          "opacity": { "value": 0.5 },
           "size": { "value": 5, "random": true },
           "line_linked": {
-            "enable": true,
-            "distance": 150,
-            "color": "#ffffff",
-            "opacity": 0.4,
-            "width": 1
+            "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1
           },
           "move": {
-            "enable": true,
-            "speed": 6,
-            "direction": "none",
-            "random": false,
-            "straight": false,
-            "out_mode": "out"
+            "enable": true, "speed": 6, "direction": "none", "random": false,
+            "straight": false, "out_mode": "out"
           }
         },
         "interactivity": {
@@ -127,7 +104,7 @@
             "resize": true
           },
           "modes": {
-            "grab": { "distance": 200, "line_linked": { "opacity": 1 } },
+            "grab": { "distance": 200, "line_linked": { "opacity": 1 }},
             "push": { "particles_nb": 4 }
           }
         },
@@ -140,27 +117,9 @@
         if (win) {
           const doc = win.document;
           doc.write(`
-            <!DOCTYPE html>
-            <html>
-            <head>
-              <title>ZGC in about:blank</title>
-              <style>
-                html, body {
-                  margin: 0;
-                  height: 100%;
-                  overflow: hidden;
-                }
-                iframe {
-                  border: none;
-                  width: 100%;
-                  height: 100%;
-                }
-              </style>
-            </head>
-            <body>
-              <iframe src="${siteURL}"></iframe>
-            </body>
-            </html>
+            <!DOCTYPE html><html><head><title>ZGC in about:blank</title>
+            <style>html,body{margin:0;height:100%;overflow:hidden}iframe{border:none;width:100%;height:100%}</style>
+            </head><body><iframe src="${siteURL}"></iframe></body></html>
           `);
           doc.close();
         } else {
@@ -168,7 +127,6 @@
         }
       }
     </script>
-
     <script src="/js/main.js"></script>
     <script src="/js/subtitle.js"></script>
   </body>
