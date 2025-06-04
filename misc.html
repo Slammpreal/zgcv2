@@ -18,14 +18,13 @@
         color: var(--text-color);
         font-family: 'Courier New', monospace;
         margin: 0;
-        padding: 0;
+        padding: 1em;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        height: 100vh;
+        min-height: 100vh;
         position: relative;
-        overflow: hidden;
+        overflow-x: hidden;
       }
 
       h1, h2, p, label {
@@ -40,7 +39,7 @@
         z-index: 2;
       }
 
-      input[type="url"] {
+      input[type="url"], input[type="text"] {
         width: 100%;
         padding: 10px;
         border: none;
@@ -49,6 +48,7 @@
         color: var(--text-color);
         font-family: 'Courier New', monospace;
         box-sizing: border-box;
+        font-size: 1em;
       }
 
       button {
@@ -59,6 +59,13 @@
         color: var(--button-text);
         cursor: pointer;
         font-family: 'Courier New', monospace;
+        font-size: 1em;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: var(--accent);
+        color: var(--button-text);
       }
 
       .button-wrapper {
@@ -69,6 +76,11 @@
         max-width: 600px;
         position: relative;
         z-index: 2;
+        gap: 0.5em;
+      }
+
+      .button-wrapper button {
+        flex: 1;
       }
 
       div.container {
@@ -83,6 +95,8 @@
         text-align: center;
         position: relative;
         z-index: 2;
+        font-size: 0.9em;
+        opacity: 0.8;
       }
 
       a.home-link {
@@ -91,6 +105,8 @@
 
       a.home-link button {
         background-color: var(--accent);
+        width: 100%;
+        max-width: 200px;
       }
 
       #particles-js {
@@ -123,8 +139,8 @@
     <div class="container">
       <div>
         <h1>Tab Cloaker</h1>
-        <p>Enter a new tab title or a image URL below. What you set will be used on the whole site.</p>
-        <p><input id="userinput" type="url" placeholder="Enter a title or image URL" autocomplete="on" /></p>
+        <p>Enter a new tab title or an image URL below. What you set will be used on the whole site.</p>
+        <p><input id="userinput" type="text" placeholder="Enter a title or image URL" autocomplete="on" /></p>
         <p id="console-output"></p>
         <div class="button-wrapper">
           <button onclick="changeTabTitle();">Set Title</button>
@@ -137,7 +153,7 @@
     <div class="container">
       <div>
         <h1>Ads consent</h1>
-        <p>Sometimes, ads are shown to support the creator, if you would not like to see ads or it slows down your computer too much, you can disable them here.</p>
+        <p>Sometimes, ads are shown to support the creator. If you would not like to see ads or it slows down your computer too much, you can disable them here.</p>
         <label for="adConsent">Do not show ads at all:</label>
         <input type="checkbox" id="adConsent" name="adConsent" />
       </div>
@@ -192,33 +208,88 @@
 
       const themes = {
         original: {
-          '--bg-color': '#121212', '--text-color': '#ffffff', '--button-bg': '#b625cc', '--button-text': '#ffffff', '--accent': '#22c55e'
+          '--bg-color': '#121212',
+          '--text-color': '#ffffff',
+          '--button-bg': '#b625cc',
+          '--button-text': '#ffffff',
+          '--accent': '#22c55e'
         },
         light: {
-          '--bg-color': '#f4f4f4', '--text-color': '#111111', '--button-bg': '#cccccc', '--button-text': '#111111', '--accent': '#007acc'
+          '--bg-color': '#f4f4f4',
+          '--text-color': '#111111',
+          '--button-bg': '#cccccc',
+          '--button-text': '#111111',
+          '--accent': '#007acc'
         },
         tokyo: {
-          '--bg-color': '#1a1b26', '--text-color': '#c0caf5', '--button-bg': '#7aa2f7', '--button-text': '#1a1b26', '--accent': '#9ece6a'
+          '--bg-color': '#1a1b26',
+          '--text-color': '#c0caf5',
+          '--button-bg': '#7aa2f7',
+          '--button-text': '#1a1b26',
+          '--accent': '#9ece6a'
         },
         github: {
-          '--bg-color': '#0d1117', '--text-color': '#c9d1d9', '--button-bg': '#238636', '--button-text': '#ffffff', '--accent': '#58a6ff'
+          '--bg-color': '#0d1117',
+          '--text-color': '#c9d1d9',
+          '--button-bg': '#238636',
+          '--button-text': '#ffffff',
+          '--accent': '#58a6ff'
         },
         synthwave: {
-          '--bg-color': '#2a2139', '--text-color': '#f92672', '--button-bg': '#66d9ef', '--button-text': '#2a2139', '--accent': '#fd971f'
+          '--bg-color': '#2a2139',
+          '--text-color': '#f92672',
+          '--button-bg': '#66d9ef',
+          '--button-text': '#2a2139',
+          '--accent': '#fd971f'
         }
       };
 
       function setTheme(themeName) {
         const theme = themes[themeName];
         if (!theme) return;
-        Object.entries(theme).forEach(([k, v]) => document.documentElement.style.setProperty(k, v));
+        Object.entries(theme).forEach(([property, value]) => {
+          document.documentElement.style.setProperty(property, value);
+        });
         localStorage.setItem('theme', themeName);
       }
 
       (function restoreTheme() {
         const saved = localStorage.getItem('theme');
-        if (saved && themes[saved]) setTheme(saved);
+        if (saved && themes[saved]) {
+          setTheme(saved);
+        } else {
+          setTheme('original');
+        }
       })();
+
+      // Placeholder functions for Tab Cloaker buttons - you can implement these in misc.js or main.js
+      function changeTabTitle() {
+        const val = document.getElementById('userinput').value.trim();
+        if(val) {
+          document.title = val;
+          document.getElementById('console-output').textContent = `Tab title set to "${val}"`;
+        }
+      }
+      function changeTabIcon() {
+        const val = document.getElementById('userinput').value.trim();
+        if(val) {
+          let link = document.querySelector("link[rel~='icon']");
+          if(!link) {
+            link = document.createElement('link');
+            link.rel = 'icon';
+            document.head.appendChild(link);
+          }
+          link.href = val;
+          document.getElementById('console-output').textContent = `Tab icon set to "${val}"`;
+        }
+      }
+      function resetTabSettings() {
+        document.title = "Miscellaneous | ZGC";
+        let link = document.querySelector("link[rel~='icon']");
+        if(link) link.href = "/favicon.ico";
+        document.getElementById('userinput').value = '';
+        document.getElementById('console-output').textContent = '';
+      }
     </script>
 
     <script src="/js/misc.js"></script>
