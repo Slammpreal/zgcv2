@@ -14,60 +14,29 @@
     <link rel="shortcut-icon" href="/favicon.ico" />
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
-      :root {
-        --bg-color: #1a1b26;
-        --text-color: #a9b1d6;
-        --accent-green: #3ad900;
-        --accent-purple: #bb9af7;
-        --accent-blue: #7aa2f7;
-      }
-
-      body {
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        font-family: 'Courier New', monospace;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-      }
-
       p {
+        text-align: center;
         max-width: 600px;
         margin: 20px auto;
+        font-family: 'Courier New', monospace;
       }
-
       input[type="text"] {
         font-family: 'Courier New', monospace;
-        width: 100%;
-        max-width: 600px;
-        font-size: 18px;
-        padding: 6px 20px;
-        margin: 20px auto 10px;
-        border-radius: 30px;
-        border: none;
-        outline: none;
-        box-sizing: border-box;
-        color: var(--text-color);
-        background-color: #2a2c3b;
       }
-
       button {
         cursor: pointer;
-        background-color: var(--accent-green);
+        background-color: #22c55e;
         border: none;
-        color: var(--bg-color);
+        color: white;
         padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
         font-size: 16px;
         border-radius: 20px;
         margin-top: 20px;
         font-family: 'Courier New', monospace;
-        transition: filter 0.3s ease;
       }
-
-      button:hover {
-        filter: brightness(0.85);
-      }
-
       .game-link {
         text-decoration: none;
         flex: 1 0 calc(25% - 30px);
@@ -75,9 +44,8 @@
         box-sizing: border-box;
         perspective: 1000px;
       }
-
       .hover-effect {
-        background-color: #2a2c3b;
+        background-color: #949494;
         border-radius: 30px;
         height: 400px;
         transition: transform 0.1s ease;
@@ -85,23 +53,20 @@
         will-change: transform;
         overflow: hidden;
       }
-
       .game-icon {
         border-radius: 30px;
         width: 300px;
         height: 300px;
         display: block;
       }
-
       .game-title {
         font-size: 30px;
         font-weight: bold;
-        color: var(--accent-purple);
+        color: #000000;
         text-align: center;
         margin: auto;
         padding: 10px 0;
       }
-
       .flex-container {
         display: flex;
         flex-wrap: wrap;
@@ -109,7 +74,6 @@
         gap: 30px;
         padding: 20px 0;
       }
-
       @keyframes spin {
         0% {
           transform: rotate(0deg);
@@ -118,81 +82,78 @@
           transform: rotate(360deg);
         }
       }
-
       #particles-js {
         position: fixed;
         top: 0; left: 0;
         width: 100%;
         height: 100%;
         z-index: -1;
-        background-color: var(--bg-color);
+        background-color: #121212;
       }
-
       #back-to-top {
         font-family: 'Courier New', monospace;
         cursor: pointer;
-        background-color: var(--accent-purple);
+        background-color: #b625cc;
         border: none;
-        color: var(--bg-color);
+        color: white;
         padding: 15px 32px;
         font-size: 16px;
         border-radius: 20px;
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        display: none;
-        transition: filter 0.3s ease;
       }
-
-      #back-to-top:hover {
-        filter: brightness(0.85);
-      }
-
+      /* Style the "Go to homepage" anchor as button */
       .home-link {
         display: inline-block;
         cursor: pointer;
-        background-color: var(--accent-purple);
-        color: var(--bg-color);
+        background-color: #b625cc;
+        color: white;
         padding: 15px 32px;
         font-size: 16px;
         border-radius: 20px;
         font-family: 'Courier New', monospace;
         text-decoration: none;
         margin-top: 5px;
-        transition: filter 0.3s ease;
       }
-
-      .home-link:hover {
-        filter: brightness(0.85);
+      /* Search bar styling */
+      #search {
+        width: 100%;
+        max-width: 600px;
+        font-size: 18px;
+        padding: 6px 20px;
+        margin: auto;
+        border-radius: 30px;
+        font-family: 'Courier New', monospace;
+        border: none;
+        outline: none;
+        box-sizing: border-box;
+        margin-bottom: 20px;
       }
     </style>
   </head>
-  <body>
+  <body style="background-color: #121212; color: #ffffff; font-family: 'Courier New', monospace; text-decoration: none; text-align: center; margin: 0; padding: 0;">
     <div id="particles-js"></div>
 
-    <h1 style="font-size: 3em; text-align: center; color: var(--accent-purple);">Projects</h1>
+    <h1 style="font-size: 3em; text-align: center;">Projects</h1>
     <input
       type="text"
       id="search"
       onkeyup="searchGames()"
       placeholder="Search for games..."
-      autocomplete="off"
     />
     <div
       id="loader"
-      style="display: block; border: 16px solid #3a3c4b; border-top: 16px solid var(--accent-blue); border-radius: 50%; width: 120px; height: 120px; animation: spin 0.3s linear infinite; margin: auto; margin-top: 1rem;"
+      style="display: block; border: 16px solid #f3f3f3; border-top: 16px solid #3498db; border-radius: 50%; width: 120px; height: 120px; animation: spin 0.3s linear infinite; margin: auto; margin-top: 1rem;"
     ></div>
     <div id="game-container" class="flex-container"></div>
-    <p>
+    <p class="text-center">
       <a href="/index.html" class="home-link">Go to the homepage</a>
     </p>
-    <button id="back-to-top">Back to top</button>
+    <button id="back-to-top" style="display: none; position: fixed; bottom: 20px; right: 20px;">Back to top</button>
 
     <script>
       particlesJS("particles-js", {
         particles: {
           number: { value: 60, density: { enable: true, value_area: 800 } },
-          color: { value: "#7aa2f7" },
+          color: { value: "#ffffff" },
           shape: { type: "circle" },
           opacity: { value: 0.8, random: false },
           size: { value: 4, random: true },
@@ -233,6 +194,7 @@
           });
           document.getElementById("loader").style.display = "none";
 
+          // Attach hover tilt events after DOM elements exist
           attachTiltEffect();
         })
         .catch((error) => console.error("Error:", error));
@@ -266,7 +228,7 @@
             const y = e.clientY - rect.top;
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -15;
+            const rotateX = ((y - centerY) / centerY) * -15; // increased tilt
             const rotateY = ((x - centerX) / centerX) * 15;
             const scale = 1.1;
 
